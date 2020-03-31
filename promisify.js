@@ -45,3 +45,22 @@ main()
 console.log('next ---')
 
 // 对于非 Node.js 标准风格的函数，也提供自定义转换函数的功能。
+
+// error + n args
+// 换有多个参数的回调函数为Promise 
+// child_process.exec
+// child_process.execFile
+// dns.lookup
+// dns.lookupService
+// fs.read
+// fs.write
+
+// 假如你转换这些函数为promise，它会返回一个对象(由多个参数构成的对象，而不是一个值)。
+// 不await得到的是一个promise,await得到的是一个执行后的promise
+const dns = require('dns')
+const lookupAsync = util.promisify(dns.lookup)
+let dnsLookup = async ()=> {
+    let obj = await lookupAsync('nodejs.org')
+    console.log('dns obj=', obj)
+}
+dnsLookup()
