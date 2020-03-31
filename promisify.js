@@ -42,5 +42,6 @@ async function main() {
     }
 }
 main()
+console.log('next ---')
 
 // 对于非 Node.js 标准风格的函数，也提供自定义转换函数的功能。
